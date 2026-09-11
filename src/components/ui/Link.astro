@@ -1,0 +1,20 @@
+---
+interface Props {
+	href: string;
+	arrow?: boolean;
+}
+
+const { href, arrow = false } = Astro.props;
+---
+
+<a
+	href={href}
+	class="group inline-flex items-center gap-2 font-serif-bold text-sm uppercase tracking-wide text-[#B4552D] hover:text-black"
+>
+	<slot />
+	{arrow && (
+		<span aria-hidden="true" class="transition-transform group-hover:translate-x-1">
+			&rarr;
+		</span>
+	)}
+</a>

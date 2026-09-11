@@ -1,23 +1,66 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/escudo.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Federación Ajedrez Ceuta</title>
 	</head>
 	<body>
-		<slot />
+		<Header />
+		<main>
+			<slot />
+		</main>
+		<Footer />
 	</body>
 </html>
 
-<style>
+<style is:global>
 	@import "tailwindcss";
+
+	@theme {
+		--font-sans: "AROneSans-Regular", ui-sans-serif, system-ui, sans-serif;
+		--font-serif: "Sentient-Regular", ui-serif, Georgia, serif;
+		--font-serif-bold: "Sentient-Bold", "Sentient-Regular", ui-serif, Georgia, serif;
+	}
+
+	@font-face {
+		font-family: "Sentient-Regular";
+		src: url("/fonts/Sentient-Regular.woff2") format("woff2");
+		font-weight: 400;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "Sentient-Bold";
+		src: url("/fonts/Sentient-Bold.woff2") format("woff2");
+		font-weight: 700;
+		font-display: swap;
+		font-style: normal;
+	}
+
+	@font-face {
+		font-family: "AROneSans-Regular";
+		src: url("/fonts/AROneSans-Regular.woff2") format("woff2");
+		font-weight: 400;
+		font-display: swap;
+		font-style: normal;
+	}
 
 	html,
 	body {
 		margin: 0;
+	}
+
+	body {
+		font-family: "AROneSans-Regular", ui-sans-serif, system-ui, sans-serif;
 	}
 </style>

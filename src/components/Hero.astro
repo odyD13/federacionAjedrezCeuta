@@ -1,0 +1,39 @@
+---
+import Button from "./ui/Button.astro";
+---
+
+<section class="relative flex justify-start w-full overflow-hidden bg-[#F9DCCB]">
+    <div
+        class="flex min-h-[85vh]  max-w-5xl flex-col justify-center pl-10 py-16 md:px-16"
+    >
+        <img
+            src="/escudo.webp"
+            alt="Escudo de la Federación de Ajedrez de Ceuta"
+            class="mb-4 h-20 w-20"
+        />
+        <h1
+            class="max-w-[12ch] font-serif-bold text-4xl uppercase leading-[0.95] text-black md:text-6xl"
+        >
+            Federación de Ajedrez de Ceuta
+        </h1>
+        <p
+            class="mt-8 max-w-[52ch] font-sans text-base leading-relaxed text-neutral-700 md:text-lg"
+        >
+            Órgano oficial de fomento, competición y difusión del ajedrez en la
+            Ciudad Autónoma de Ceuta. Gestión del deporte federado, formación
+            técnica y homologación de torneos oficiales.
+        </p>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+            <Button href="#" variant="primary">Torneos Próximos</Button>
+            <Button href="#noticias" variant="secondary">Ver noticias</Button>
+        </div>
+    </div>
+    <div class="absolute right-0 bottom-0 top-0 w-[50%]">
+        <img
+            src="/imgs/chessimg.webp"
+            alt="Mano moviendo una pieza de ajedrez sobre el tablero"
+            class="h-full w-full object-cover "
+            style="clip-path: polygon(100% 0%, 100% 100%, 40% 100%, 0% 50%, 40% 0%)"
+        />
+    </div>
+</section>

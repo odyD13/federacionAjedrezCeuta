@@ -1,0 +1,79 @@
+---
+import Button from "./ui/Button.astro";
+import Link from "./ui/Link.astro";
+---
+
+<section id="noticias" class="bg-white px-6 py-20 md:px-16 lg:px-24">
+	<h2
+		class="font-serif-bold text-2xl uppercase tracking-wide text-black md:text-3xl"
+	>
+		Últimas noticias
+	</h2>
+
+	<div class="mt-10 grid grid-cols-1 gap-10 md:grid-cols-5">
+		<article class="flex flex-col md:col-span-3">
+			<img
+				src="/imgs/magnus.webp"
+				alt="Jugadores de ajedrez durante una partida"
+				class="aspect-[16/9] w-full object-cover"
+			/>
+			<div class="flex flex-col gap-4 pt-5">
+				<span
+					class="w-fit bg-[#B4552D] px-3 py-1 font-sans text-xs uppercase tracking-widest text-white"
+				>
+					Novedad
+				</span>
+				<h3 class="font-serif-bold text-2xl text-black md:text-3xl">
+					La Federación impulsa la formación de nuevos árbitros en Ceuta
+				</h3>
+				<p class="font-sans leading-relaxed text-neutral-600">
+					La Federación de Ajedrez de Ceuta pone en marcha un nuevo programa de
+					formación técnica dirigido a árbitros y entrenadores, con el objetivo
+					de reforzar la cantera del ajedrez ceutí y homologar los torneos
+					oficiales de la Ciudad Autónoma.
+				</p>
+				<div class="flex items-center justify-between border-t border-black/10 pt-4">
+					<span class="font-sans text-sm text-neutral-500">Escrito por Redacción</span>
+					<Link href="#" arrow>Leer noticia</Link>
+				</div>
+			</div>
+		</article>
+
+		<div class="flex flex-col gap-6 md:col-span-2">
+			<article class="relative flex h-72 flex-1 flex-col justify-end overflow-hidden bg-black p-6">
+				<img
+					src="/imgs/chessimg2.webp"
+					alt="Partida de ajedrez"
+					class="absolute inset-0 h-full w-full object-cover opacity-70"
+				/>
+				<div class="relative">
+					<p class="font-sans text-xs uppercase tracking-widest text-white/70">
+						12 de septiembre de 2026
+					</p>
+					<h3 class="mt-2 font-serif-bold text-xl text-white">
+						Magnus Carlsen vendrá a Ceuta
+					</h3>
+				</div>
+			</article>
+			<article class="relative flex h-72 flex-1 flex-col justify-end overflow-hidden bg-black p-6">
+				<img
+					src="/imgs/chessimg3.webp"
+					alt="Tablero de ajedrez"
+					class="absolute inset-0 h-full w-full object-cover opacity-70"
+				/>
+				<div class="relative">
+					<p class="font-sans text-xs uppercase tracking-widest text-white/70">
+						5 de septiembre de 2026
+					</p>
+					<h3 class="mt-2 font-serif-bold text-xl text-white">
+						Abierto el plazo de inscripción al curso de iniciación
+					</h3>
+				</div>
+			</article>
+		</div>
+	</div>
+
+	<div class="mt-16 flex justify-center">
+		<Button href="#" variant="primary">Ver noticias</Button>
+	</div>
+</section>
