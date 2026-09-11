@@ -1,4 +1,4 @@
-<header class="flex w-full flex-col items-center bg-white pt-6 pb-6">
+<header class="flex w-full flex-row flex-wrap justify-between gap-y-6 px-2 md:flex-col md:items-center md:gap-y-3 bg-white pt-6 pb-6">
 	<a href="/" class="overflow-hidden rounded-full border border-black/10" aria-label="Inicio">
 		<img
 			src="/escudo.webp"
@@ -8,11 +8,48 @@
 			class="block h-20 w-20 object-cover"
 		/>
 	</a>
+
+	<button
+		id="menu-toggle"
+		type="button"
+		class="mt-4 flex h-10 w-10 items-center justify-center rounded text-neutral-900 md:hidden"
+		aria-label="Abrir menú"
+		aria-controls="primary-nav"
+		aria-expanded="false"
+	>
+		<svg
+			id="menu-icon-open"
+			class="h-6 w-6"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			aria-hidden="true"
+		>
+			<line x1="3" y1="6" x2="21" y2="6" />
+			<line x1="3" y1="12" x2="21" y2="12" />
+			<line x1="3" y1="18" x2="21" y2="18" />
+		</svg>
+		<svg
+			id="menu-icon-close"
+			class="hidden h-6 w-6"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="2"
+			aria-hidden="true"
+		>
+			<line x1="6" y1="6" x2="18" y2="18" />
+			<line x1="6" y1="18" x2="18" y2="6" />
+		</svg>
+	</button>
+
 	<nav
-		class="mt-3 font-sans text-base text-black md:text-lg"
+		id="primary-nav"
+		class="hidden w-full flex-col items-center font-sans text-base text-black md:flex md:w-auto md:flex-row md:items-center md:text-lg"
 		aria-label="Navegación principal"
 	>
-		<ul class="flex items-center gap-10 uppercase tracking-[0.18em]">
+		<ul class="flex w-full flex-col items-center gap-3 uppercase tracking-[0.18em] md:w-auto md:flex-row md:gap-10 md:pt-0">
 			<li>
 				<a href="/" class="underline underline-offset-8 decoration-black">Inicio</a>
 			</li>
@@ -40,3 +77,26 @@
 		</ul>
 	</nav>
 </header>
+
+<script>
+	const toggle = document.getElementById("menu-toggle");
+	const nav = document.getElementById("primary-nav");
+	const iconOpen = document.getElementById("menu-icon-open");
+	const iconClose = document.getElementById("menu-icon-close");
+
+	function setMenu(open: boolean) {
+		nav?.classList.toggle("hidden", !open);
+		toggle?.setAttribute("aria-expanded", String(open));
+		toggle?.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+		iconOpen?.classList.toggle("hidden", open);
+		iconClose?.classList.toggle("hidden", !open);
+	}
+
+	toggle?.addEventListener("click", () => {
+		setMenu(nav.classList.contains("hidden"));
+	});
+
+	nav?.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", () => setMenu(false));
+	});
+</script>

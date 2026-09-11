@@ -3,7 +3,7 @@ import Button from "./ui/Button.astro";
 import Link from "./ui/Link.astro";
 ---
 
-<section id="noticias" class="bg-white px-6 py-20 md:px-16 lg:px-24">
+<section id="noticias" class="bg-white px-6 py-16 md:px-16 md:py-20 lg:px-24">
 	<h2
 		class="font-serif-bold text-2xl uppercase tracking-wide text-black md:text-3xl"
 	>
@@ -13,7 +13,7 @@ import Link from "./ui/Link.astro";
 	<div class="mt-10 grid grid-cols-1 gap-10 md:grid-cols-5">
 		<article class="flex flex-col md:col-span-3">
 			<img
-				src="/imgs/magnus.webp"
+				src="/imgs/chessimg2.webp"
 				alt="Jugadores de ajedrez durante una partida"
 				class="aspect-[16/9] w-full object-cover"
 			/>
@@ -24,30 +24,40 @@ import Link from "./ui/Link.astro";
 					Novedad
 				</span>
 				<h3 class="font-serif-bold text-2xl text-black md:text-3xl">
-					La Federación impulsa la formación de nuevos árbitros en Ceuta
+					La Federación impulsa la formación de nuevos árbitros en
+					Ceuta
 				</h3>
 				<p class="font-sans leading-relaxed text-neutral-600">
-					La Federación de Ajedrez de Ceuta pone en marcha un nuevo programa de
-					formación técnica dirigido a árbitros y entrenadores, con el objetivo
-					de reforzar la cantera del ajedrez ceutí y homologar los torneos
-					oficiales de la Ciudad Autónoma.
+					La Federación de Ajedrez de Ceuta pone en marcha un nuevo
+					programa de formación técnica dirigido a árbitros y
+					entrenadores, con el objetivo de reforzar la cantera del
+					ajedrez ceutí y homologar los torneos oficiales de la Ciudad
+					Autónoma.
 				</p>
-				<div class="flex items-center justify-between border-t border-black/10 pt-4">
-					<span class="font-sans text-sm text-neutral-500">Escrito por Redacción</span>
+				<div
+					class="flex items-center justify-between border-t border-black/10 pt-4"
+				>
+					<span class="font-sans text-sm text-neutral-500"
+						>Escrito por Redacción</span
+					>
 					<Link href="#" arrow>Leer noticia</Link>
 				</div>
 			</div>
 		</article>
 
 		<div class="flex flex-col gap-6 md:col-span-2">
-			<article class="relative flex h-72 flex-1 flex-col justify-end overflow-hidden bg-black p-6">
+			<article
+				class="relative flex h-72 flex-1 flex-col justify-end overflow-hidden bg-black p-6"
+			>
 				<img
-					src="/imgs/chessimg2.webp"
+					src="/imgs/magnus.webp"
 					alt="Partida de ajedrez"
-					class="absolute inset-0 h-full w-full object-cover opacity-70"
+					class="absolute inset-0 inset inset-shadow-[0px 80px 50px 0px rgba(0,0,0,0.6)] h-full w-full object-cover opacity-70"
 				/>
 				<div class="relative">
-					<p class="font-sans text-xs uppercase tracking-widest text-white/70">
+					<p
+						class="font-sans text-xs uppercase tracking-widest text-white/70"
+					>
 						12 de septiembre de 2026
 					</p>
 					<h3 class="mt-2 font-serif-bold text-xl text-white">
@@ -55,14 +65,19 @@ import Link from "./ui/Link.astro";
 					</h3>
 				</div>
 			</article>
-			<article class="relative flex h-72 flex-1 flex-col justify-end overflow-hidden bg-black p-6">
+			<article
+				class="relative flex h-72 flex-1 flex-col justify-end overflow-hidden bg-black p-6"
+			>
 				<img
 					src="/imgs/chessimg3.webp"
 					alt="Tablero de ajedrez"
-					class="absolute inset-0 h-full w-full object-cover opacity-70"
+					class="absolute inset-0 inset inset-shadow-[0px 80px 50px 0px rgba(0,0,0,0.6)] h-full w-full object-cover opacity-70"
+
 				/>
 				<div class="relative">
-					<p class="font-sans text-xs uppercase tracking-widest text-white/70">
+					<p
+						class="font-sans text-xs uppercase tracking-widest text-white/70"
+					>
 						5 de septiembre de 2026
 					</p>
 					<h3 class="mt-2 font-serif-bold text-xl text-white">

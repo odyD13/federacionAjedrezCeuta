@@ -7,13 +7,14 @@ interface Props {
 
 const { href, variant = "primary", type = "button" } = Astro.props;
 
-const base =
-	"inline-flex items-center justify-center rounded-none px-7 py-3 font-sans text-sm uppercase tracking-wider transition-colors";
+const base = "inline-flex items-center justify-center rounded-none px-7 py-3 font-sans text-sm uppercase tracking-wider transition-colors";
 
 const variants = {
 	primary: "bg-[#B4552D] text-white hover:bg-[#93391b]",
-	secondary: "border border-white bg-transparent text-neutral-900 hover:bg-white/20",
-	outline: "border border-[#B4552D] bg-transparent text-[#B4552D] hover:bg-[#F9DCCB]",
+	secondary:
+		"border border-white bg-transparent text-neutral-900 hover:bg-white/20",
+	outline:
+		"border border-[#B4552D] bg-transparent text-[#B4552D] hover:bg-[#F9DCCB]",
 };
 ---
 
