@@ -1,13 +1,83 @@
 <footer id="contacto" class="border-t border-black/10 bg-white px-6 py-12">
-	<div class="flex flex-col items-center gap-4 text-center">
-		<img
-			src="/escudo.webp"
-			alt="Escudo de la Federación de Ajedrez de Ceuta"
-			width="56"
-			height="56"
-			class="h-14 w-14"
-		/>
-		<p class="font-serif-bold text-lg text-black">Federación de Ajedrez de Ceuta</p>
+	<div class="mx-auto flex max-w-6xl flex-col gap-10 md:grid md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+		<div class="flex flex-col items-center gap-4 text-center md:items-start md:text-left">
+			<a href="/" class="overflow-hidden rounded-full border border-black/10" aria-label="Inicio">
+				<img
+					src="/escudo.webp"
+					alt="Escudo de la Federación de Ajedrez de Ceuta"
+					width="64"
+					height="64"
+					class="block h-16 w-16 object-cover"
+				/>
+			</a>
+			<p class="font-serif-bold text-lg text-black">Federación de Ajedrez de Ceuta</p>
+		</div>
+
+		<nav aria-label="Enlaces">
+			<h2 class="font-serif-bold text-sm uppercase tracking-[0.18em] text-black">Enlaces</h2>
+			<ul class="mt-4 flex flex-col gap-2 font-sans text-sm text-neutral-500">
+				<li>
+					<a href="/" class="hover:text-black">Inicio</a>
+				</li>
+				<li>
+					<a href="#noticias" class="hover:text-black">Noticias</a>
+				</li>
+				<li>
+					<a href="#torneos" class="hover:text-black">Torneos</a>
+				</li>
+				<li>
+					<a href="#contacto" class="hover:text-black">Contacto</a>
+				</li>
+			</ul>
+		</nav>
+
+		<nav aria-label="Legal">
+			<h2 class="font-serif-bold text-sm uppercase tracking-[0.18em] text-black">Legal</h2>
+			<ul class="mt-4 flex flex-col gap-2 font-sans text-sm text-neutral-500">
+				<li>
+					<a href="#" class="hover:text-black">Aviso legal</a>
+				</li>
+				<li>
+					<a href="#" class="hover:text-black">Política de privacidad</a>
+				</li>
+				<li>
+					<a href="#" class="hover:text-black">Política de cookies</a>
+				</li>
+			</ul>
+		</nav>
+
+		<div>
+			<h2 class="font-serif-bold text-sm uppercase tracking-[0.18em] text-black">Contacto</h2>
+			<ul class="mt-4 flex flex-col gap-2 font-sans text-sm text-neutral-500">
+				<li>
+					<a href="mailto:contacto@fajedrezceuta.es" class="hover:text-black"
+						>contacto@fajedrezceuta.es</a
+					>
+				</li>
+				<li>
+					<a href="tel:+34900000000" class="hover:text-black">+34 900 000 000</a>
+				</li>
+				<li>
+					<a href="mailto:contacto@fajedrezceuta.es" class="hover:text-black"
+						>Dirección: Calle Ejemplo, 1, Ceuta</a
+					>
+				</li>
+			</ul>
+			<ul class="mt-6 flex gap-4 font-sans text-sm">
+				<li>
+					<a href="#" class="text-neutral-500 transition-colors hover:text-black">X</a>
+				</li>
+				<li>
+					<a href="#" class="text-neutral-500 transition-colors hover:text-black">Instagram</a>
+				</li>
+				<li>
+					<a href="#" class="text-neutral-500 transition-colors hover:text-black">YouTube</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="mt-10 border-t border-black/10 pt-6 text-center">
 		<p class="font-sans text-sm text-neutral-500">
 			© 2026 Federación de Ajedrez de Ceuta. Todos los derechos reservados.
 		</p>
