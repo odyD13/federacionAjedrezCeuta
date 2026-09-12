@@ -1,5 +1,19 @@
 ---
+import { tournaments } from "../data/tournaments";
 import Button from "./ui/Button.astro";
+
+interface Props {
+	compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+
+const featured = tournaments.slice(0, 2);
+
+const pillTone = (status: string) =>
+	status === "Finalizado"
+		? "bg-neutral-400"
+		: "bg-[#B4552D]";
 ---
 
 <section id="torneos" class="bg-[#FAFAFA] px-6 py-16 md:px-16 md:py-20 lg:px-24">
@@ -10,58 +24,43 @@ import Button from "./ui/Button.astro";
 	</h2>
 
 	<div class="mt-10 grid grid-cols-1 gap-8 md:grid-cols-2">
-		<article class="flex flex-col border border-black/10 bg-white p-6 md:p-8">
-			<span
-				class="w-fit bg-[#B4552D] px-3 py-1 font-sans text-xs uppercase tracking-widest text-white"
+		{featured.map((item, index) => (
+			<article
+				class={`flex-col border border-black/10 ${
+					index % 2 === 1
+						? "hidden md:flex bg-[#FAE3D3] p-6 md:p-8"
+						: "flex bg-white p-6 md:p-8"
+				}`}
 			>
-				Próximo
-			</span>
-			<h3 class="mt-6 font-serif-bold text-2xl text-black">Torneo Ceutí 2026</h3>
-			<ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-sans text-sm text-neutral-600">
-				<li>48 jugadores</li>
-				<li>7 rondas</li>
-				<li>Ritmo rápido</li>
-			</ul>
-			<div class="mt-8 grid grid-cols-2 gap-4 border-t border-black/10 pt-6 font-sans text-sm">
-				<div>
-					<p class="text-xs uppercase tracking-widest text-neutral-400">Fecha</p>
-					<p class="mt-1 text-neutral-700">12 de marzo de 2026</p>
+				<span
+					class={`w-fit ${pillTone(item.status)} px-3 py-1 font-sans text-xs uppercase tracking-widest text-white`}
+				>
+					{item.status}
+				</span>
+				<h3 class="mt-6 font-serif-bold text-2xl text-black">{item.name}</h3>
+				<ul
+					class="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-sans text-sm text-neutral-600"
+				>
+					{item.details.map((detail) => (
+						<li>{detail}</li>
+					))}
+				</ul>
+				<div
+					class="mt-8 grid grid-cols-2 gap-4 border-t border-black/10 pt-6 font-sans text-sm"
+				>
+					<div>
+						<p class="text-xs uppercase tracking-widest text-neutral-400">Fecha</p>
+						<p class="mt-1 text-neutral-700">{item.date}</p>
+					</div>
+					<div>
+						<p class="text-xs uppercase tracking-widest text-neutral-400">Lugar</p>
+						<p class="mt-1 text-neutral-700">{item.place}</p>
+					</div>
 				</div>
-				<div>
-					<p class="text-xs uppercase tracking-widest text-neutral-400">Lugar</p>
-					<p class="mt-1 text-neutral-700">Salón de actos, Ceuta</p>
+				<div class="mt-8 flex justify-center">
+					<Button href="#" variant="outline">Ver detalles</Button>
 				</div>
-			</div>
-			<div class="mt-8 flex justify-center">
-				<Button href="#" variant="outline">Ver detalles</Button>
-			</div>
-		</article>
-
-		<article class="hidden md:flex flex-col border border-black/10 bg-[#FAE3D3] p-6 md:p-8">
-			<span
-				class="w-fit bg-neutral-400 px-3 py-1 font-sans text-xs uppercase tracking-widest text-white"
-			>
-				Finalizado
-			</span>
-			<h3 class="mt-6 font-serif-bold text-2xl text-black">Torneo infantil</h3>
-			<ul class="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-sans text-sm text-neutral-600">
-				<li>20 jugadores</li>
-				<li>7 rondas</li>
-				<li>10 mins</li>
-			</ul>
-			<div class="mt-8 grid grid-cols-2 gap-4 border-t border-black/10 pt-6 font-sans text-sm">
-				<div>
-					<p class="text-xs uppercase tracking-widest text-neutral-400">Fecha</p>
-					<p class="mt-1 text-neutral-700">2 de febrero de 2026</p>
-				</div>
-				<div>
-					<p class="text-xs uppercase tracking-widest text-neutral-400">Lugar</p>
-					<p class="mt-1 text-neutral-700">Sala polivalente, Ceuta</p>
-				</div>
-			</div>
-			<div class="mt-8 flex justify-center">
-				<Button href="#" variant="outline">Ver detalles</Button>
-			</div>
-		</article>
+			</article>
+		))}
 	</div>
 </section>

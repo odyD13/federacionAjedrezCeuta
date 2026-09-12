@@ -1,5 +1,22 @@
-<header class="flex w-full flex-row flex-wrap justify-between gap-y-6 px-2 md:flex-col md:items-center md:gap-y-3 bg-white pt-6 pb-6">
-	<a href="/" class="overflow-hidden rounded-full border border-black/10" aria-label="Inicio">
+---
+const path = Astro.url.pathname.replace(/\/$/, "") || "/";
+
+const nav = [
+	{ href: "/", label: "Inicio" },
+	{ href: "/noticias", label: "Noticias" },
+	{ href: "/torneos", label: "Torneos" },
+	{ href: "/contacto", label: "Contacto" },
+];
+---
+
+<header
+	class="flex w-full flex-row flex-wrap justify-between gap-y-6 px-2 md:flex-col md:items-center md:gap-y-3 bg-white pt-6 pb-6"
+>
+	<a
+		href="/"
+		class="overflow-hidden rounded-full border border-black/10"
+		aria-label="Inicio"
+	>
 		<img
 			src="/escudo.webp"
 			alt="Escudo de la Federación de Ajedrez de Ceuta"
@@ -26,9 +43,9 @@
 			stroke-width="2"
 			aria-hidden="true"
 		>
-			<line x1="3" y1="6" x2="21" y2="6" />
-			<line x1="3" y1="12" x2="21" y2="12" />
-			<line x1="3" y1="18" x2="21" y2="18" />
+			<line x1="3" y1="6" x2="21" y2="6"></line>
+			<line x1="3" y1="12" x2="21" y2="12"></line>
+			<line x1="3" y1="18" x2="21" y2="18"></line>
 		</svg>
 		<svg
 			id="menu-icon-close"
@@ -39,8 +56,8 @@
 			stroke-width="2"
 			aria-hidden="true"
 		>
-			<line x1="6" y1="6" x2="18" y2="18" />
-			<line x1="6" y1="18" x2="18" y2="6" />
+			<line x1="6" y1="6" x2="18" y2="18"></line>
+			<line x1="6" y1="18" x2="18" y2="6"></line>
 		</svg>
 	</button>
 
@@ -49,31 +66,29 @@
 		class="hidden w-full flex-col items-center font-sans text-base text-black md:flex md:w-auto md:flex-row md:items-center md:text-lg"
 		aria-label="Navegación principal"
 	>
-		<ul class="flex w-full flex-col items-center gap-3 uppercase tracking-[0.18em] md:w-auto md:flex-row md:gap-10 md:pt-0">
-			<li>
-				<a href="/" class="underline underline-offset-8 decoration-black">Inicio</a>
-			</li>
-			<li>
-				<a
-					href="#noticias"
-					class="hover:underline hover:underline-offset-8 hover:decoration-black"
-					>Noticias</a
-				>
-			</li>
-			<li>
-				<a
-					href="#torneos"
-					class="hover:underline hover:underline-offset-8 hover:decoration-black"
-					>Torneos</a
-				>
-			</li>
-			<li>
-				<a
-					href="#contacto"
-					class="hover:underline hover:underline-offset-8 hover:decoration-black"
-					>Contacto</a
-				>
-			</li>
+		<ul
+			class="flex w-full flex-col items-center gap-3 uppercase tracking-[0.18em] md:w-auto md:flex-row md:gap-10 md:pt-0"
+		>
+			{
+				nav.map((item) => {
+					const active = path === item.href;
+					return (
+						<li>
+							<a
+								href={item.href}
+								aria-current={active ? "page" : undefined}
+								class={
+									active
+										? "underline underline-offset-8 decoration-black"
+										: "hover:underline hover:underline-offset-8 hover:decoration-black"
+								}
+							>
+								{item.label}
+							</a>
+						</li>
+					);
+				})
+			}
 		</ul>
 	</nav>
 </header>

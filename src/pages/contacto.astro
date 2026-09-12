@@ -1,0 +1,65 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Button from "../components/ui/Button.astro";
+---
+
+<Layout>
+	<section id="contacto" class="bg-white px-6 py-16 md:px-16 md:py-20 lg:px-24">
+		<h2
+			class="font-serif-bold text-2xl uppercase tracking-wide text-black md:text-3xl"
+		>
+			Contacto
+		</h2>
+
+		<div class="mt-10 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
+			<div class="flex flex-col gap-8">
+				<div class="border-t border-black/10 pt-6">
+					<p class="text-xs uppercase tracking-widest text-neutral-400">Correo</p>
+					<a
+						href="mailto:contacto@fajedrezceuta.es"
+						class="mt-1 inline-block font-serif-bold text-xl text-black hover:text-[#B4552D]"
+					>
+						contacto@fajedrezceuta.es
+					</a>
+				</div>
+				<div class="border-t border-black/10 pt-6">
+					<p class="text-xs uppercase tracking-widest text-neutral-400">Teléfono</p>
+					<a
+						href="tel:+34900000000"
+						class="mt-1 inline-block font-serif-bold text-xl text-black hover:text-[#B4552D]"
+					>
+						+34 900 000 000
+					</a>
+				</div>
+				<div class="border-t border-black/10 pt-6">
+					<p class="text-xs uppercase tracking-widest text-neutral-400">Dirección</p>
+					<p class="mt-1 font-serif-bold text-xl text-black">
+						Plaza de los Reyes, Ceuta
+					</p>
+				</div>
+				<div class="border-t border-black/10 pt-6">
+					<p class="text-xs uppercase tracking-widest text-neutral-400">Horario</p>
+					<p class="mt-1 font-sans text-neutral-700">
+						Lunes a viernes · 9:00–14:00 y 17:00–20:00
+					</p>
+				</div>
+				<div class="mt-2 border-t border-black/10 pt-6">
+					<Button href="mailto:contacto@fajedrezceuta.es" variant="primary"
+						>Escríbenos</Button
+					>
+				</div>
+			</div>
+
+			<div class="aspect-[4/3] w-full border border-black/10">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3232.4434413095696!2d-5.310931374154948!3d35.887153672521414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd0ca400459fbabd%3A0xfa33e510e9389506!2sPlaza%20de%20Los%20Reyes%2C%2051001%20Ceuta!5e0!3m2!1ses!2ses!4v1789247174563!5m2!1ses!2ses"
+					class="h-full w-full border-0"
+					title="Mapa de la Plaza de los Reyes, Ceuta"
+					allowfullscreen
+					loading="lazy"
+					referrerpolicy="strict-origin-when-cross-origin"
+				></iframe>
+			</div>
+		</div>
+	</section>
+</Layout>

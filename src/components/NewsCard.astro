@@ -1,0 +1,36 @@
+---
+import Link from "./ui/Link.astro";
+
+interface Props {
+	title: string;
+	tag: string;
+	image: string;
+	alt: string;
+	excerpt: string;
+	author?: string;
+	date?: string;
+}
+
+const { title, tag, image, alt, excerpt, author, date } = Astro.props;
+---
+
+<article class="flex flex-col border border-black/10 bg-white">
+	<img src={image} alt={alt} class="aspect-[16/9] w-full object-cover" />
+	<div class="flex flex-1 flex-col gap-3 p-6">
+		<span
+			class="w-fit bg-[#B4552D] px-3 py-1 font-sans text-xs uppercase tracking-widest text-white"
+		>
+			{tag}
+		</span>
+		<h3 class="font-serif-bold text-xl leading-snug text-black">{title}</h3>
+		<p class="font-sans text-sm leading-relaxed text-neutral-600">{excerpt}</p>
+		<div
+			class="mt-auto flex items-center justify-between border-t border-black/10 pt-4"
+		>
+			<span class="font-sans text-sm text-neutral-500"
+				>{author ? `Escrito por ${author}` : date}</span
+			>
+			<Link href="#" arrow>Leer noticia</Link>
+		</div>
+	</div>
+</article>
