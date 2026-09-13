@@ -36,17 +36,10 @@ import Header from "../components/Header.astro";
 
 	@theme {
 		--font-sans: "AROneSans-Regular", ui-sans-serif, system-ui, sans-serif;
-		--font-serif: "Sentient-Regular", ui-serif, Georgia, serif;
-		--font-serif-bold: "Sentient-Bold", "Sentient-Regular", ui-serif, Georgia, serif;
+		--font-serif: ui-serif, Georgia, serif;
+		--font-serif-bold: "Sentient-Bold", ui-serif, Georgia, serif;
 	}
 
-	@font-face {
-		font-family: "Sentient-Regular";
-		src: url("/fonts/Sentient-Regular.woff2") format("woff2");
-		font-weight: 400;
-		font-display: swap;
-		font-style: normal;
-	}
 
 	@font-face {
 		font-family: "Sentient-Bold";
