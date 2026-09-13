@@ -15,7 +15,7 @@ const [featured, ...side] = latest;
 
 <section id="noticias" class="bg-white px-6 py-16 md:px-16 md:py-20 lg:px-24">
 	<h2
-		class="font-serif-bold text-2xl uppercase tracking-wide text-black md:text-3xl"
+		class="relative before:content-[''] before:block before:w-[60px] before:h-1 before:bg-[#B4552D] before:absolute before:-bottom-2 font-serif-bold text-2xl uppercase tracking-wide text-black md:text-3xl"
 	>
 		Últimas noticias
 	</h2>
@@ -53,7 +53,7 @@ const [featured, ...side] = latest;
 		<div class="flex flex-col gap-6 md:col-span-2">
 			{side.map((item) => (
 				<article
-					class="relative hidden md:flex h-72 flex-1 flex-col justify-end overflow-hidden bg-black p-6"
+					class="side-card relative hidden md:flex h-72 flex-1 flex-col justify-end overflow-hidden bg-black p-6"
 				>
 					<img
 						src={item.image}
@@ -83,3 +83,13 @@ const [featured, ...side] = latest;
 		</div>
 	)}
 </section>
+
+<style>
+	.side-card img {
+		transition: transform 500ms ease;
+	}
+
+	.side-card:hover img {
+		transform: scale(1.05);
+	}
+</style>
