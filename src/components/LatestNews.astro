@@ -1,5 +1,5 @@
 ---
-import { news } from "../data/news";
+import { getCollection } from "astro:content";
 import Button from "./ui/Button.astro";
 import Link from "./ui/Link.astro";
 
@@ -9,6 +9,9 @@ interface Props {
 
 const { hideCta = false } = Astro.props;
 
+const news = (await getCollection("news")).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 const latest = news.slice(0, 3);
 const [featured, ...side] = latest;
 ---
@@ -22,57 +25,70 @@ const [featured, ...side] = latest;
 
 	<div class="mt-10 grid grid-cols-1 gap-10 md:grid-cols-5">
 		<article class="flex flex-col md:col-span-3">
-			<img
-				src={featured.image}
-				alt={featured.alt}
-				class="aspect-[16/9] w-full object-cover"
-			/>
+			<a href={`/noticias/${featured.id}`}>
+				<img
+					src={featured.data.image}
+					alt={featured.data.alt}
+					class="aspect-[16/9] w-full object-cover"
+				/>
+			</a>
 			<div class="flex flex-col gap-4 pt-5">
 				<span
 					class="w-fit bg-[#B4552D] px-3 py-1 font-sans text-xs uppercase tracking-widest text-white"
 				>
-					{featured.tag}
+					{featured.data.tag}
 				</span>
 				<h3 class="font-serif-bold text-2xl text-black md:text-3xl">
-					{featured.title}
+					<a href={`/noticias/${featured.id}`} class="hover:text-[#B4552D]">
+						{featured.data.title}
+					</a>
 				</h3>
 				<p class="font-sans leading-relaxed text-neutral-600">
-					{featured.excerpt}
+					{featured.data.excerpt}
 				</p>
 				<div
 					class="flex items-center justify-between border-t border-black/10 pt-4"
 				>
 					<span class="font-sans text-sm text-neutral-500"
-						>{featured.author ? `Escrito por ${featured.author}` : featured.date}</span
+						>{featured.data.author
+							? `Escrito por ${featured.data.author}`
+							: featured.data.date.toLocaleDateString("es-ES", {
+									day: "numeric",
+									month: "long",
+									year: "numeric",
+							  })}</span
 					>
-					<Link href="#" arrow>Leer noticia</Link>
+					<Link href={`/noticias/${featured.id}`} arrow>Leer noticia</Link>
 				</div>
 			</div>
 		</article>
 
 		<div class="flex flex-col gap-6 md:col-span-2">
 			{side.map((item) => (
-				<article
+				<a
+					href={`/noticias/${item.id}`}
 					class="side-card relative hidden md:flex h-72 flex-1 flex-col justify-end overflow-hidden bg-black p-6"
 				>
 					<img
-						src={item.image}
-						alt={item.alt}
+						src={item.data.image}
+						alt={item.data.alt}
 						class="absolute inset-0 inset inset-shadow-[0px 80px 50px 0px rgba(0,0,0,0.6)] h-full w-full object-cover opacity-70"
 					/>
 					<div class="relative">
-						{item.date && (
-							<p
-								class="font-sans text-xs uppercase tracking-widest text-white/70"
-							>
-								{item.date}
-							</p>
-						)}
+						<p
+							class="font-sans text-xs uppercase tracking-widest text-white/70"
+						>
+							{item.data.date.toLocaleDateString("es-ES", {
+								day: "numeric",
+								month: "long",
+								year: "numeric",
+							})}
+						</p>
 						<h3 class="mt-2 font-serif-bold text-xl text-white">
-							{item.title}
+							{item.data.title}
 						</h3>
 					</div>
-				</article>
+				</a>
 			))}
 		</div>
 	</div>

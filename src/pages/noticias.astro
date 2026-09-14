@@ -1,8 +1,12 @@
 ---
+import { getCollection } from "astro:content";
 import LatestNews from "../components/LatestNews.astro";
 import NewsCard from "../components/NewsCard.astro";
 import Layout from "../layouts/Layout.astro";
-import { news } from "../data/news";
+
+const news = (await getCollection("news")).sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
 
 <Layout>
@@ -18,7 +22,7 @@ import { news } from "../data/news";
                 </h2>
                 <div class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                     {news.slice(3).map((item) => (
-                        <NewsCard {...item} />
+                        <NewsCard news={item.data} href={`/noticias/${item.id}`} />
                     ))}
                 </div>
             </section>

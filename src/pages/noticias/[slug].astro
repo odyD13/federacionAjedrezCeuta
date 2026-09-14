@@ -1,0 +1,105 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Link from "../../components/ui/Link.astro";
+
+export async function getStaticPaths() {
+	const posts = await getCollection("news");
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: { post },
+	}));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const { title, tag, image, alt, excerpt, author, date } = post.data;
+const formattedDate = date.toLocaleDateString("es-ES", {
+	day: "numeric",
+	month: "long",
+	year: "numeric",
+});
+---
+
+<Layout>
+	<article class="bg-white px-6 py-16 md:px-16 md:py-20 lg:px-24">
+		<div class="mx-auto max-w-3xl">
+			<Link href="/noticias">&larr; Volver a noticias</Link>
+
+			<img
+				src={image}
+				alt={alt}
+				class="mt-8 aspect-[16/9] w-full object-cover"
+			/>
+
+			<div class="mt-8 flex flex-col gap-4">
+				<span
+					class="w-fit bg-[#B4552D] px-3 py-1 font-sans text-xs uppercase tracking-widest text-white"
+				>
+					{tag}
+				</span>
+				<h1 class="font-serif-bold text-3xl leading-tight text-black md:text-4xl">
+					{title}
+				</h1>
+				<p class="font-sans leading-relaxed text-neutral-600">{excerpt}</p>
+				<div
+					class="flex items-center justify-between border-t border-black/10 pt-4"
+				>
+					<span class="font-sans text-sm text-neutral-500"
+						>{author ? `Escrito por ${author}` : formattedDate}</span
+					>
+					<span class="font-sans text-sm text-neutral-500">{formattedDate}</span>
+				</div>
+			</div>
+
+			<div
+				class="news-content mt-10 border-t border-black/10 pt-8 font-sans leading-relaxed text-neutral-700"
+			>
+				<Content />
+			</div>
+		</div>
+	</article>
+</Layout>
+
+<style is:global>
+	.news-content p {
+		margin: 0 0 1rem;
+	}
+	.news-content h2,
+	.news-content h3 {
+		font-family: "Sentient-Bold", ui-serif, Georgia, serif;
+		color: #000;
+		margin: 1.75rem 0 0.75rem;
+		line-height: 1.25;
+	}
+	.news-content h2 {
+		font-size: 1.5rem;
+	}
+	.news-content h3 {
+		font-size: 1.25rem;
+	}
+	.news-content ul,
+	.news-content ol {
+		margin: 0 0 1rem 1.5rem;
+		list-style: revert;
+	}
+	.news-content a {
+		color: #b4552d;
+		font-weight: 600;
+		text-decoration: underline;
+	}
+	.news-content a:hover {
+		color: #93391b;
+	}
+	.news-content blockquote {
+		border-left: 3px solid #b4552d;
+		padding-left: 1rem;
+		margin: 0 0 1rem;
+		font-style: italic;
+		color: #525252;
+	}
+	.news-content img {
+		margin: 1.5rem 0;
+	}
+</style>
