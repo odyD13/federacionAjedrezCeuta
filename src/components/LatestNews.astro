@@ -5,9 +5,12 @@ import Link from "./ui/Link.astro";
 
 interface Props {
 	hideCta?: boolean;
+	showSideOnMobile?: boolean;
 }
 
-const { hideCta = false } = Astro.props;
+const { hideCta = false, showSideOnMobile = false } = Astro.props;
+
+const sideVisibility = showSideOnMobile ? "flex" : "hidden md:flex";
 
 const news = (await getCollection("news")).sort(
 	(a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -67,16 +70,16 @@ const [featured, ...side] = latest;
 			{side.map((item) => (
 				<a
 					href={`/noticias/${item.id}`}
-					class="side-card relative hidden md:flex h-72 flex-1 flex-col justify-end overflow-hidden bg-black p-6"
+					class={`side-card relative ${sideVisibility} h-72 flex-1 flex-col justify-end overflow-hidden bg-black p-6`}
 				>
 					<img
 						src={item.data.image}
 						alt={item.data.alt}
-						class="absolute inset-0 inset inset-shadow-[0px 80px 50px 0px rgba(0,0,0,0.6)] h-full w-full object-cover opacity-70"
+						class="absolute inset-0 inset inset-shadow-[0px 80px 50px 0px rgba(0,0,0,0.6)] h-full w-full object-cover opacity-40"
 					/>
 					<div class="relative">
 						<p
-							class="font-sans text-xs uppercase tracking-widest text-white/70"
+							class="font-sans text-xs uppercase tracking-widest text-white/80"
 						>
 							{item.data.date.toLocaleDateString("es-ES", {
 								day: "numeric",
