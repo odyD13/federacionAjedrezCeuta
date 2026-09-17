@@ -10,7 +10,7 @@ const news = (await getCollection("news")).sort(
 ---
 
 <Layout>
-    <LatestNews hideCta />
+    <LatestNews hideCta showSideOnMobile />
     {
         news.length > 3 && (
             <section
